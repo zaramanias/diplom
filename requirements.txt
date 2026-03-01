@@ -1,0 +1,7 @@
+pytest
+selenium
+requests
+allure-pytest
+python-dotenv
+webdriver-manager
+flake8
