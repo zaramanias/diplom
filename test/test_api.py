@@ -2,7 +2,7 @@ import os
 import pytest
 import allure
 from dotenv import load_dotenv
-from test_api_page import YougileApi
+from pages.test_api_page import YougileApi
 
 
 load_dotenv()
@@ -22,6 +22,7 @@ def yougile():
 
 
 @pytest.mark.api
+@allure.story("Авторизация")
 @allure.title("API: Логин возвращает токен")
 @allure.description("""Проверяем, что после логина токен
                     сохраняется в api.token""")
@@ -32,6 +33,7 @@ def test_login(yougile):
 
 
 @pytest.mark.api
+@allure.story("Задачи")
 @allure.title("API: Создание задачи")
 @allure.description("""
 Создаём проект → доску → колонку → задачу.
@@ -77,6 +79,7 @@ def test_create_task(yougile):
 
 
 @pytest.mark.api
+@allure.story("Задачи")
 @allure.title("API: Получение задач")
 @allure.description("""
 Создаём проект → доску → колонку → задачу.
@@ -126,6 +129,7 @@ def test_get_task(yougile):
 
 
 @pytest.mark.api
+@allure.story("Задачи")
 @allure.title("API: Получение задачи по ID")
 @allure.description("""
 Создаём проект → доску → колонку → задачу.
@@ -171,6 +175,7 @@ def test_get_task_by_id(yougile):
 
 
 @pytest.mark.api
+@allure.story("Задачи")
 @allure.title("API: Удаление задачи")
 @allure.description("""
 Создаём задачу → удаляем её (deleted=True) →
@@ -220,6 +225,7 @@ def test_delete_task(yougile):
 
 
 @pytest.mark.api
+@allure.story("Проекты")
 @allure.title("API: Удаление проекта")
 @allure.description("""
 Получаем список проектов → берём первый →

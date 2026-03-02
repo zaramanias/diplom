@@ -1,9 +1,10 @@
-from test_ui_page import LabirintPage
+from pages.test_ui_page import LabirintPage
 import pytest
 import allure
 
 
 @pytest.mark.ui
+@allure.story("Поиск товаров")
 @allure.title("UI: Поиск возвращает результаты")
 @allure.description(
     "Проверяем, что поиск по запросу отображает корректные данные.")
@@ -24,6 +25,7 @@ def test_search():
 
 
 @pytest.mark.ui
+@allure.story("Работа с корзиной")
 @allure.title("UI: Добавление товара в корзину")
 @allure.description("""
                     Проверяем, что при добавлении
@@ -52,6 +54,7 @@ def test_add_to_cart():
 
 
 @pytest.mark.ui
+@allure.story("Работа с корзиной")
 @allure.title("UI: Удаление товара из корзины через кнопку '-'")
 @allure.description("""
                     Проверяем, что удаление товара из корзины
@@ -81,6 +84,7 @@ def test_delete_prod_with_minus():
 
 
 @pytest.mark.ui
+@allure.story("Карточка товара")
 @allure.title("UI: Клик по карточке товара открывает корректную карточку")
 @allure.description("""
                     Проверяем, что название книги в выдаче
@@ -107,6 +111,7 @@ def test_open_prod_card():
 
 
 @pytest.mark.ui
+@allure.story("Работа с корзиной")
 @allure.title("UI: Восстановление корзины после удаления")
 @allure.description("""
     Проверяем, что после очистки корзины можно восстановить
