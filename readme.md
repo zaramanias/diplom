@@ -169,10 +169,10 @@ allure serve ./allure-results
 
 Перед запуском тестов необходимо создать файл `.env` в корне проекта и указать данные для авторизации:
 
-LOGIN=your_login  
-PASSWORD=your_password  
-COMPANY_ID=your_company_id  
-USER_ID=your_user_id  
+LOGIN=
+PASSWORD=
+COMPANY_ID=
+USER_ID=
 
 ---
 

@@ -39,7 +39,7 @@ class LabirintPage:
         self.wait = WebDriverWait(self.driver, 10)
 
     @allure.step("Открытие главной страницы")
-    def open(self):
+    def open(self) -> None:
         """
         Открывает главную страницу и добавляет куки
         """
@@ -50,17 +50,17 @@ class LabirintPage:
             })
 
     @allure.step("Открытие страницы корзины")
-    def open_cart(self):
+    def open_cart(self) -> None:
         """
         Открывает страницу корзины.
         """
         self.driver.get(cart_url)
 
-    def quit(self):
+    def quit(self) -> None:
         self.driver.quit()
 
     @allure.step("Поиск по запросу: {text}")
-    def search(self, text: str):
+    def search(self, text: str) -> None:
         """
         Выполняет поиск по введенному тексту.
         :param text: str - строка поиска
@@ -81,7 +81,7 @@ class LabirintPage:
         return element.get_attribute("data-title")
 
     @allure.step("Добавление товара в корзину по индексу")
-    def add_product(self, index: int):
+    def add_product(self, index: int) -> None:
         """
         Добавляет товар в корзину по индексу карточки.
         :param index: int - индекс карточки
@@ -104,14 +104,14 @@ class LabirintPage:
         return int(element)
 
     @allure.step("Нажатие '-' в корзине")
-    def click_btn_minus_in_cart(self):
+    def click_btn_minus_in_cart(self) -> None:
         """
         Уменьшает количество товара в корзине.
         """
         self.driver.find_element(*self.cart_minus_btn).click()
 
     @allure.step("Подтверждение alert (OK) при удалении")
-    def confirm_alert_ok(self):
+    def confirm_alert_ok(self) -> None:
         """
         Подтверждает alert и ждёт, что корзина станет пустой.
         """
@@ -121,7 +121,7 @@ class LabirintPage:
         )
 
     @allure.step("Открытие карточки товара по индексу")
-    def open_prod_card(self, index: int):
+    def open_prod_card(self, index: int) -> None:
         """
         Открывает карточку товара по индексу карточки.
         :param index: int
@@ -155,7 +155,7 @@ class LabirintPage:
         return name.split(":")[0].strip()
 
     @allure.step("Очистка корзины (кнопка 'Очистить корзину')")
-    def delete_from_cart(self):
+    def delete_from_cart(self) -> None:
         """
         Нажимает 'Очистить корзину' на странице корзины.
         """
@@ -163,7 +163,7 @@ class LabirintPage:
             EC.visibility_of_element_located(self.delete_cart)).click()
 
     @allure.step("Восстановление удаленных товаров в корзине")
-    def restore_cart(self):
+    def restore_cart(self) -> None:
         """
         Нажимает 'Восстановить удаленное' и ждёт,
         что в корзине снова будет >0 товаров.

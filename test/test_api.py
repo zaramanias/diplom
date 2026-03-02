@@ -14,7 +14,7 @@ USER_ID = os.getenv("USER_ID")
 
 @pytest.fixture()
 @allure.step("Фикстура: авторизация в Yougile через API")
-def yougile():
+def yougile() -> YougileApi:
     api = YougileApi()
     with allure.step("Логинимся и получаем токен"):
         api.login(LOGIN, PASSWORD, COMPANY_ID)
@@ -27,7 +27,7 @@ def yougile():
 @allure.description("""Проверяем, что после логина токен
                     сохраняется в api.token""")
 @allure.severity(allure.severity_level.CRITICAL)
-def test_login(yougile):
+def test_login(yougile: YougileApi) -> None:
     with allure.step("Проверяем, что токен не None"):
         assert yougile.token is not None
 
@@ -41,7 +41,7 @@ def test_login(yougile):
                     Затем удаляем задачу (soft delete).
 """)
 @allure.severity(allure.severity_level.CRITICAL)
-def test_create_task(yougile):
+def test_create_task(yougile: YougileApi) -> None:
     with allure.step("Создаём проект"):
         proj_resp = yougile.new_proj("BEST PROJECT", USER_ID)
         assert proj_resp.status_code == 201
@@ -87,7 +87,7 @@ def test_create_task(yougile):
                     нём есть задача с ожидаемым названием.
 """)
 @allure.severity(allure.severity_level.NORMAL)
-def test_get_task(yougile):
+def test_get_task(yougile: YougileApi) -> None:
     with allure.step("Создаём проект"):
         proj_resp = yougile.new_proj("BEST PROJECT", USER_ID)
         assert proj_resp.status_code == 201
@@ -136,7 +136,7 @@ def test_get_task(yougile):
 Затем получаем задачу по id и проверяем title.
 """)
 @allure.severity(allure.severity_level.NORMAL)
-def test_get_task_by_id(yougile):
+def test_get_task_by_id(yougile: YougileApi) -> None:
     with allure.step("Создаём проект"):
         proj_resp = yougile.new_proj("NEW BEST PROJECT", USER_ID)
         assert proj_resp.status_code == 201
@@ -182,7 +182,7 @@ def test_get_task_by_id(yougile):
                     проверяем, что задача помечена deleted.
 """)
 @allure.severity(allure.severity_level.CRITICAL)
-def test_delete_task(yougile):
+def test_delete_task(yougile: YougileApi) -> None:
     with allure.step("Создаём проект"):
         proj_resp = yougile.new_proj("NEW BEST PROJECT", USER_ID)
         assert proj_resp.status_code == 201
@@ -232,7 +232,7 @@ def test_delete_task(yougile):
                     удаляем его (deleted=True) → проверяем статус 200.
 """)
 @allure.severity(allure.severity_level.CRITICAL)
-def test_delete_proj(yougile):
+def test_delete_proj(yougile: YougileApi) -> None:
     with allure.step("Создаём проект"):
         proj_resp = yougile.new_proj("NEW BEST PROJECT", USER_ID)
         assert proj_resp.status_code == 201

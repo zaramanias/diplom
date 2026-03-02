@@ -9,7 +9,7 @@ import allure
 @allure.description(
     "Проверяем, что поиск по запросу отображает корректные данные.")
 @allure.severity(allure.severity_level.NORMAL)
-def test_search():
+def test_search() -> None:
     page = LabirintPage()
     with allure.step("Открытие страницы"):
         page.open()
@@ -32,7 +32,7 @@ def test_search():
                     товаров количество в корзине увеличивается.
                     """)
 @allure.severity(allure.severity_level.CRITICAL)
-def test_add_to_cart():
+def test_add_to_cart() -> None:
     page = LabirintPage()
     with allure.step("Открытие страницы"):
         page.open()
@@ -61,7 +61,7 @@ def test_add_to_cart():
                     через '-' приводит к пустой корзине.
                     """)
 @allure.severity(allure.severity_level.CRITICAL)
-def test_delete_prod_with_minus():
+def test_delete_prod_with_minus() -> None:
     page = LabirintPage()
     with allure.step("Открытие страницы"):
         page.open()
@@ -91,7 +91,7 @@ def test_delete_prod_with_minus():
                     совпадает с названием на странице карточки товара.
                     """)
 @allure.severity(allure.severity_level.NORMAL)
-def test_open_prod_card():
+def test_open_prod_card() -> None:
     page = LabirintPage()
     with allure.step("Открытие страницы"):
         page.open()
@@ -118,7 +118,7 @@ def test_open_prod_card():
     удаленные товары через кнопку 'Восстановить удаленное',
     и количество товаров увеличивается.""")
 @allure.severity(allure.severity_level.CRITICAL)
-def test_restore_prod_in_cart():
+def test_restore_prod_in_cart() -> None:
     page = LabirintPage()
     with allure.step("Открытие страницы"):
         page.open()

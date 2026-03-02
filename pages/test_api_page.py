@@ -5,12 +5,12 @@ base_url = "https://yougile.com/api-v2"
 
 
 class YougileApi:
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Конструктор класса YougileApi
         """
-        self.token = None
-        self.headers = {}
+        self.token: str | None = None
+        self.headers: dict[str, str] = {}
 
     @allure.step("""API: Логин в Yougile
                  (ID компании={company_id}, логин={login})""")
@@ -26,7 +26,7 @@ class YougileApi:
         return resp
 
     @allure.step("API: Получить проекты {proj_id}")
-    def get_proj(self, proj_id: str = None) -> requests.Response:
+    def get_proj(self, proj_id: str | None = None) -> requests.Response:
         """
         Получение проекта
         """
